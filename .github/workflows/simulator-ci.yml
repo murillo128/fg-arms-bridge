@@ -1,0 +1,34 @@
+name: Simulator checks
+on:
+  push:
+    branches: [main]
+    paths: ['docs/index.html', 'docs/simulator/**', 'tools/*simulator*', 'tests/simulator.test.cjs', 'extension/scripts/arms_engine.lua', 'manual/data/tables.json', 'manual/data/weapons.json', '.github/workflows/simulator-ci.yml']
+  pull_request:
+    paths: ['docs/index.html', 'docs/simulator/**', 'tools/*simulator*', 'tests/simulator.test.cjs', 'extension/scripts/arms_engine.lua', 'manual/data/tables.json', 'manual/data/weapons.json', '.github/workflows/simulator-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Install test tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y lua5.4
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Numeric contracts and shipped Lua parity
+        run: python tools/check_simulator.py
+      - name: Browser and HTTP integration
+        run: python tools/test_simulator_browser.py
