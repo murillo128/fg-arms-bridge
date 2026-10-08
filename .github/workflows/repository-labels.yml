@@ -1,0 +1,64 @@
+name: Repository workflow labels
+
+"on":
+  push:
+    branches: [main]
+    paths: ['.github/workflows/repository-labels.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: repository-labels
+  cancel-in-progress: false
+
+jobs:
+  labels:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Ensure the nine Skillforge workflow labels exist
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+
+          required = {
+              "queued": "Waiting for the next eligible execution wave",
+              "execution-ready": "Designed and ready for execution",
+              "in-progress": "Implementation is in progress",
+              "review-ready": "Implementation is ready for independent audit",
+              "design-required": "Requires an explicit design decision",
+              "investigation-required": "Requires investigation before execution",
+              "blocked": "Blocked by an unresolved external prerequisite",
+              "completed": "Merged and completed",
+              "curator-detected": "Detected by derived repository knowledge curation",
+          }
+
+          def names():
+              result = subprocess.run(
+                  ["gh", "label", "list", "--limit", "1000", "--json", "name"],
+                  check=True, capture_output=True, text=True,
+              )
+              return {item["name"] for item in json.loads(result.stdout)}
+
+          existing = names()
+          for name, description in required.items():
+              if name not in existing:
+                  subprocess.run(
+                      ["gh", "label", "create", name, "--color", "1D76DB",
+                       "--description", description],
+                      check=True,
+                  )
+
+          missing = set(required) - names()
+          if missing:
+              raise SystemExit("Missing required labels: " + ", ".join(sorted(missing)))
+          print("All nine workflow labels are present; unrelated labels were preserved.")
+          PY
