@@ -8,16 +8,6 @@ The project's durable mission and product/domain scope belong in `README.md` and
 
 This file owns repository-wide agent invariants and routes work to reusable skills. Skills define reusable procedure, issues define bounded task contracts, and repository documents define durable project knowledge.
 
-## One-time template bootstrap
-
-This section exists only in the canonical Skillforge template and repositories not yet initialized.
-
-- Never execute `repository-bootstrap` inside canonical `murillo128/skillforge` itself.
-- In a repository created from this template, presence of `skills/repository-bootstrap/SKILL.md` means initialization is incomplete.
-- Before normal non-trivial project work, run that skill once with actual mission/scope/established constraints.
-- Successful bootstrap creates/verifies required labels, makes README project-specific, adapts project invariants, deletes bootstrap skill, and removes this section/routing entry.
-- Local Codex runner provisioning is optional and is a separate post-bootstrap capability.
-
 ## Load context progressively
 
 For non-trivial work start with `AGENTS.md` and the controlling issue. Then load only accepted decisions/spec sections, source/tests/config/evidence, and the one workflow skill needed by the current role/action. Do not preload every document, skill, issue/PR history, result directory, or derived wiki.
@@ -43,7 +33,6 @@ Do not promote `OPEN`, `SPECULATIVE`, exploratory, or wiki-derived statements in
 
 Load skills lazily by role:
 
-- one-time initialization: `skills/repository-bootstrap/SKILL.md`;
 - optional local runner provisioning/repair: `skills/codex-local-runner/SKILL.md`;
 - design authority: `skills/design-github-issue/SKILL.md`;
 - ordinary issue executor: `skills/spec-driven-codex-loop/SKILL.md`;
@@ -117,9 +106,17 @@ Keep evidence proportional. Commit source, tests, configuration, small determini
 - Replacing `in-progress` with `review-ready` is the executor's final GitHub mutation. Afterward only local teardown/bookkeeping/response composition is allowed until another controller returns it to execution.
 - Outside the positive `codex-pr-audit` path, merge requires a later explicit user-facing instruction after review finds no material blocker.
 
-## Project-specific additions
+## Arms Bridge invariants
 
-Repositories created from the template should add only genuine domain-specific repository-wide invariants: language/runtime/coding constraints, ownership/lifetime/concurrency/security invariants, required validation paths, dependency/licensing constraints, hardware requirements, correctness/performance hard failures, or explicit planning authority. Keep reusable procedure in skills and task detail in issues.
+- Runtime code lives in `extension/` and targets Fantasy Grounds 5E with D&D 2024. Keep Lua syntax compatible with the existing host integration and preserve its capability checks and native fallback behavior. Do not vendor proprietary Fantasy Grounds ruleset code.
+- Preserve the selected initial natural result separately from the open sum. Initial 1 misses; initial 20 opens; continuation 20 adds and opens again; continuation 1–19 adds and ends the chain. Do not reapply attack modifiers or advantage to continuations, cap the game-level tail, or create Rolemaster critical effects.
+- Correlate only the identifiable base physical weapon dice. Preserve flat modifiers once, native D&D critical dice, all other damage components and their type metadata, and native per-type resistance/immunity/vulnerability handling. Never write hit points directly or silently choose an ambiguous attack context.
+- Keep original experimental curves distinguishable from official rules and calibrated evidence. Natural armor curves and several weapon families are initial approximations. Shuriken/trabuco entries are campaign proposals. Do not claim live Fantasy Grounds compatibility or finished balance without the corresponding evidence.
+- `manual/data/tables.json` is generated from the same engine shipped in the extension. Changes to the engine, version or table exporter require regeneration and independent numerical verification. Editorial content and examples must agree with the generated tables.
+- Preserve the final illustrated manual, its source PNGs and provenance. Do not replace final artwork from prompts during ordinary builds. Keep font and third-party notices separate from the code license; do not import commercial Arms Law tables or private campaign files.
+- Run `python3 tools/test.py --require-lua` for extension or packaging changes. Manual changes require the table verifier and PDF build/inspection appropriate to the changed material. Publication requires synchronized versions, validated outputs and SHA-256 checksums. Automated host mocks do not replace the documented in-application smoke test.
+- Store distributable `.ext`, PDF and source archives in versioned Releases/Packages. Keep generated output, render previews, caches and credentials out of the source tree. Release versions must be immutable: verify an existing artifact or fail; never overwrite it silently.
+
 ## Executor selection and terminal worktree cleanup
 
 Use `skills/execution-runner-selection/SKILL.md` for executor selection and `docs/execution-runners.md` for its contract. Native Codex remains the default; optional local Devin prerequisites belong to `skills/devin-local-runner/SKILL.md`. `docs/codex-operations.md` owns Codex model/effort/profile selection. Each parent/child selects independently. Configuration edits do not activate issues, release holds or migrate active sessions; final audit remains fresh independent Codex.

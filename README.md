@@ -1,59 +1,58 @@
-# Skillforge
+# Arms Bridge · O.R.T.I.C.E.
 
-A reusable GitHub repository template for skill-driven agentic software development.
+Extensión experimental para **Fantasy Grounds, sistema 5E y D&D 2024**, acompañada de *El nuevo Arms Law*, un manual ilustrado con tablas por arma. La referencia de diseño es **Arms Law de Rolemaster Classic, de ICE**: relacionar la calidad del ataque con el daño y distinguir la protección material de la defensa adicional.
 
-Skillforge separates responsibilities deliberately: `AGENTS.md` owns repository-wide invariants/routing; `skills/` owns reusable procedure; project documentation owns durable project knowledge; `wiki/` is optional derived non-normative memory; and GitHub issues own bounded execution contracts/actionable findings.
+**Estado: 0.3.1 alpha.** El motor y sus contratos de integración tienen pruebas automatizadas; la comprobación dentro de Fantasy Grounds sigue pendiente. Las curvas incluidas son originales y experimentales. Su calibración no está terminada.
 
-## Starting a project
+## Qué incluye
 
-A repository created from this template runs `skills/repository-bootstrap/SKILL.md` once before normal non-trivial work. Bootstrap verifies the required workflow labels (including `queued` for epic children), replaces this template README with the actual project's README, adapts project-specific AGENTS invariants, hard-checks its narrow publication boundary, commits initialization atomically to default branch, and removes itself. Local runner setup is opt-in and happens only as a separate post-bootstrap handoff.
+- D20 abiertos: un 20 inicial permite sumar otro d20; cada nuevo 20 continúa la cadena. El daño físico adicional sigue creciendo por encima de la última fila.
+- Ocho familias de armas, siete perfiles de protección y un catálogo de cuarenta armas, con categoría simple/marcial y uso a una o dos manos registrados por separado.
+- Conversión de los dados físicos base según su distribución: `1d12` y `2d6` conservan distribuciones distintas aunque compartan familia.
+- Componentes adicionales de ácido, fuego, necrótico y otros tipos separados. Fantasy Grounds conserva la aplicación nativa de resistencias, inmunidades y vulnerabilidades por tipo.
+- Críticos nativos de D&D, sin tablas adicionales de lesiones o críticos de Rolemaster.
+- Manual de 52 páginas, tablas por arma, introducción, ejemplos y material gráfico con estética de los años ochenta.
 
-The canonical `murillo128/skillforge` template retains bootstrap and must never bootstrap or provision a repository runner against itself.
+## Descargar e instalar
 
-## Issue workflow automation
+Las versiones se distribuyen en [Releases](https://github.com/murillo128/fg-arms-bridge/releases). Cada publicación reúne una `.ext`, el PDF y sus sumas SHA-256. Los mismos entregables se versionan como dos artefactos OCI en GitHub Packages:
 
-Skillforge uses one public issue-state dispatcher: `.github/workflows/codex-issue-state.yml`. It is the only workflow that reacts to `issues:labeled` and routes state transitions to reusable internal workflows:
+| Entregable | Package |
+|---|---|
+| Extensión | `ghcr.io/murillo128/fg-arms-bridge-extension` |
+| Manual | `ghcr.io/murillo128/fg-arms-bridge-manual` |
 
-- `execution-ready` launches/resumes the controlling issue through `.github/workflows/codex-execute-ready.yml` for native/explicit Codex, or `.github/workflows/devin-execute-ready.yml` for explicitly selected local Devin;
-- `review-ready` launches an isolated exact-head Codex PR audit through `.github/workflows/codex-review-ready.yml`, regardless of implementation executor;
-- `completed` or deliberately restored `queued` on an epic child wakes the unique active parent whose canonical DAG contains that child.
+Copia la `.ext` en la carpeta `extensions` del directorio de datos de Fantasy Grounds y actívala en una campaña de prueba 5E. Empieza con `/arms status` y el modo `compare`, que muestra el cálculo alternativo. Resuelve cada ataque y su daño de forma consecutiva, desde el mismo cliente y con un único objetivo.
 
-Both executors and the auditor use the repository self-hosted runner labeled `codex`; this is a physical host label, not an executor selection. Codex uses the App Server already shared with Desktop Remote Control; local Devin uses its installed CLI in isolated tmux sessions. The dispatcher itself may run on GitHub-hosted infrastructure for control-plane routing.
+La [guía de uso](docs/USAGE.md) explica los comandos, las armaduras, los componentes de daño y los límites de esta alpha. El [ensayo en Fantasy Grounds](docs/SMOKE_TEST.md) describe las comprobaciones pendientes dentro del programa.
 
-Local runner infrastructure is optional. Without a matching self-hosted runner, the template remains valid but execution/audit jobs cannot run locally. `skills/codex-local-runner/SKILL.md` installs or repairs the repository-scoped runner only when explicitly requested; it never creates API keys or exposes inbound services. Local Devin prerequisites belong to `skills/devin-local-runner/SKILL.md`.
+## Fuentes y construcción
 
-The same dispatcher handles issue closure by removing only the closed issue's registered implementation worktree and its associated detached PR-review worktrees, after active audit locks release. Branch refs are retained. This local cleanup is skipped in canonical SkillForge, which has no provisioned local runner; initialized repositories retain it.
+| Ruta | Contenido |
+|---|---|
+| `extension/` | Lua, XML y recursos del paquete instalable |
+| `tests/`, `tools/` | Pruebas, análisis y empaquetado de la extensión |
+| `manual/` | Contenido, tablas, ilustraciones, tipografías y generadores del PDF |
+| `docs/` | Uso, integración, equilibrio y procedimientos de construcción/publicación |
+| `.github/workflows/` | Validación, publicación e infraestructura de desarrollo heredada |
 
-## Epic DAG execution
+El motor de la extensión no requiere bibliotecas externas. Sus herramientas de desarrollo utilizan Python y Lua. El constructor del manual añade dependencias Python fijadas y tipografías incluidas con sus avisos de licencia.
 
-An epic is designed as a small parent seed plus self-contained child issues. The parent seed declares `execution_mode: epic-dag`, a child issue list, a parallelism limit, and optionally an integration branch. **The DAG is not pre-generated during design.**
-
-On the parent's first scheduler execution, `skills/codex-epic-scheduler/SKILL.md` reads all child contracts, derives the minimal direct dependency graph and serialization mutexes, validates it, initializes the integration branch when needed, and persists one canonical `codex-epic-dag:v1` parent comment. The parent then becomes `in-progress` and the scheduler activates the first deterministic dependency-ready wave.
-
-Later wake-ups reconstruct state from GitHub labels plus that canonical graph. Selected children receive canonical execution context (epic, integration branch, exact base SHA) before moving from `queued` to `execution-ready`.
-
-When every declared child is `completed`, the scheduler no longer stops with an indefinitely `in-progress` parent. It preserves the canonical epic integration branch, uses the ordinary parent branch `codex/issue-<parent>` as a finalization/staging branch, combines the current default branch with the completed epic result, creates or reuses one PR from that branch to the default branch, and hands the parent to `review-ready`. The scheduler still does not perform independent review or merge.
-
-## Review and completion
-
-Ordinary executors stop at a ready PR plus `review-ready`. The final review is performed in a fresh isolated audit context through `codex-pr-audit`/`codex-independent-review`. A positive final-capable exact-head audit has standing authority to merge that exact head, expose `completed`, and close the controlling issue. Audit failure returns the issue to execution; integration drift returns it for reconciliation without fabricating a technical failure.
-
-The same audit path closes an epic's final aggregate PR. Because the finalization branch follows the normal `codex/issue-N` convention, no special auditor or separate merge mechanism is required.
-
-## Optional derived wiki
-
-`skills/repository-wiki-curation/SKILL.md` maintains optional `wiki/**` derived from repository/GitHub evidence. The wiki is non-normative. The curator may publish only `wiki/**` directly to default branch after adversarial review and a fail-closed path boundary; actionable discrepancies go to GitHub issues labeled `curator-detected`.
-
-The core template remains generic. Project truth belongs in each repository created from it.
-
-## Execution runners and regression checks
-
-Epic/issue execution supports native Codex selection and explicitly selected local Devin, with independent fresh Codex audit. See [execution runners](docs/execution-runners.md) and [Codex operating policy](docs/codex-operations.md). Runner provisioning is opt-in and is never performed inside canonical SkillForge.
-
-Run offline regressions with Python 3.11+ and tmux:
-
-```sh
-REQUIRE_TMUX_TEST=1 python3 -m unittest discover -s .github/scripts -p "test_*.py" -v
+```bash
+python3 tools/test.py --require-lua
+python3 tools/build.py
 ```
 
-These tests use temporary Git worktrees and fake model clients, not paid model calls or production runners. Import provenance is recorded in `.github/epic-sync-provenance.json`; the README also updates existing routing descriptions for both executors.
+Consulta [manual/README.md](manual/README.md) para reconstruir las tablas y el PDF. Los productos generados se distribuyen en Releases y Packages; las imágenes finales y los scripts de generación se conservan en Git.
+
+## Reglas y límites
+
+La defensa adicional se separa de la protección material. Las familias y perfiles son aproximaciones de campaña, no equivalencias oficiales entre D&D y los tipos de armadura de Rolemaster. Las protecciones naturales y algunas familias reutilizan curvas iniciales que requieren calibración. La [evaluación numérica](docs/BALANCE.md) documenta estas limitaciones.
+
+Los críticos mantienen los dados nativos de D&D y añaden el suplemento físico una sola vez. La extensión no escribe directamente los puntos de golpe. Si no puede identificar con seguridad el componente físico o el contexto de un ataque, conserva la resolución nativa y emite un aviso.
+
+El catálogo incluye dos propuestas de campaña, shuriken y trabuco, que no se presentan como armas oficiales de D&D 2024. La cerbatana de daño fijo conserva el daño nativo en esta alpha.
+
+## Licencia y procedencia
+
+El código, la documentación y los datos originales de demostración de la extensión se distribuyen bajo [MIT](LICENSE). Las tipografías y los materiales gráficos conservan sus avisos y registros de procedencia. No se incluyen las tablas comerciales de Arms Law ni el código de los sistemas comerciales de Fantasy Grounds. Las marcas citadas identifican las referencias y plataformas correspondientes; este proyecto es independiente.
