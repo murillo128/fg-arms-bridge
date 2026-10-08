@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="4.1" release="1">
+  <announcement text="Arms Bridge 0.3.1 alpha — daño por tipos, protección natural y ocho grupos de armas. /arms para configurar." font="systemfont" />
+  <properties>
+    <name>Arms Bridge — 5E Attack and Armor Tables</name>
+    <version>0.3.1</version>
+    <author>Sergio Garcia — ChatGPT</author>
+    <description>Experimental D&amp;D 5E/2024 attack-to-damage table adapter. Includes original demonstration curves, not official Arms Law tables. Starts in comparison mode. Use /arms for controls.</description>
+    <ruleset><name>5E</name></ruleset>
+    <loadorder>20</loadorder>
+  </properties>
+  <base>
+    <script name="ArmsEngine" file="scripts/arms_engine.lua" />
+    <script name="ArmsCatalog" file="scripts/arms_catalog.lua" />
+    <script name="ArmsData" file="scripts/arms_data.lua" />
+    <script name="ArmsBridge" file="scripts/arms_bridge.lua" />
+    <script name="ArmsCommands" file="scripts/arms_commands.lua" />
+    <includefile source="campaign/arms_panel.xml" />
+  </base>
+</root>

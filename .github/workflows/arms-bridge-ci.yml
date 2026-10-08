@@ -1,0 +1,38 @@
+name: Arms Bridge product checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: arms-bridge-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-build:
+    name: Product tests and reproducible release build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ARMSBRIDGE_LUA: lua5.4
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: manual/requirements.txt
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y lua5.4
+          python3 -m pip install -r manual/requirements.txt
+      - name: Validate product and build all release artifacts
+        run: python3 tools/build_release.py

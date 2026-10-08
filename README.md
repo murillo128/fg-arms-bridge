@@ -43,7 +43,9 @@ python3 tools/test.py --require-lua
 python3 tools/build.py
 ```
 
-Consulta [manual/README.md](manual/README.md) para reconstruir las tablas y el PDF. Los productos generados se distribuyen en Releases y Packages; las imágenes finales y los scripts de generación se conservan en Git.
+La [guía de construcción](docs/BUILDING.md) explica cómo instalar las dependencias y generar todos los entregables con `python3 tools/build_release.py`. Consulta [manual/README.md](manual/README.md) para trabajar solo con las tablas y el PDF. Los productos generados se distribuyen en Releases y Packages; las imágenes finales y los scripts de generación se conservan en Git.
+
+[`VERSION`](VERSION) identifica la versión conjunta de la extensión y el manual. La [guía de publicación](docs/RELEASING.md) documenta los flujos de GitHub Actions, los reintentos y la descarga de Packages con ORAS. Una versión publicada conserva sus archivos y sus hashes; los cambios posteriores requieren otra versión.
 
 ## Reglas y límites
 

@@ -1,0 +1,142 @@
+{
+  "title": "Arms Bridge",
+  "subtitle": "Tablas experimentales de ataque y daño para D&D 2024",
+  "version": "0.3.1 alpha",
+  "language": "es-ES",
+  "sections": [
+    {
+      "id": "objeto",
+      "title": "I. Objeto de estas tablas",
+      "page_hint": 1,
+      "paragraphs": [
+        "Este cuaderno relaciona la tirada de ataque con la calidad del golpe y con la protección material del defensor. Conserva los dados y modificadores de daño de D&D 2024 como escala. Un resultado excepcional puede superar el daño habitual del arma. La inspiración es Arms Law de Rolemaster Classic, pero todas las curvas aquí publicadas son originales y experimentales: no reproducen las tablas de ICE ni constituyen una conversión oficial.",
+        "Cada arma pertenece a uno de ocho grupos de campaña: contundentes, hojas, hachas, armas de asta, arcos, ballestas, exóticas y armas de fuego. El grupo selecciona la tabla; no determina el tipo de daño. Un pico de guerra puede pertenecer al grupo de contundentes y seguir causando daño perforante. La categoría simple o marcial y el uso a una o dos manos se conservan por separado. No conceden multiplicadores ni maestrías nuevas."
+      ],
+      "source_ids": ["ice_classic", "dnd_equipment"]
+    },
+    {
+      "id": "proteccion",
+      "title": "II. Protección y defensa adicional",
+      "page_hint": 2,
+      "paragraphs": [
+        "El director asigna primero la columna de protección. Sin armadura representa ausencia de protección material especial; cuero agrupa protecciones flexibles, incluidas acolchadas y pieles; malla reúne anillas, mallas y escamas; placas reúne corazas, semiplacas, laminadas y placas completas. Son agrupaciones de esta versión, no las categorías ligera, media y pesada de D&D.",
+        "Las criaturas pueden emplear piel gruesa, escamas naturales o caparazón. Elige el perfil por la descripción de su protección, no por una CA elevada. Una criatura ágil puede tener una gran CA y consultar sin armadura. Tener escamas tampoco concede resistencia al fuego: protección material y resistencia al daño son datos distintos.",
+        "Anota la CA base material, incluida la base de diez. La defensa adicional E es la CA efectiva del ataque menos esa CA material. Placas ordinarias de CA 18 frente a CA efectiva 18 dan E = 0; con un escudo que eleve la CA efectiva a 20, E = 2. En cuero de base 12 y CA efectiva 15, E = 3. Destreza, magia, escudos y efectos permanecen en E cuando ya forman parte de la CA efectiva. No los sumes de nuevo."
+      ],
+      "source_ids": ["ice_classic", "dnd_equipment"]
+    },
+    {
+      "id": "ataque",
+      "title": "III. Tirada y consulta",
+      "page_hint": 3,
+      "paragraphs": [
+        "T es el resultado del d20 o la suma completa de una tirada abierta. B es la bonificación total de ataque. Calcula R = T + B − E. El índice interno de la tabla es I = 5R. Las páginas de armas ya expresan las filas en R, por lo que no necesitas multiplicar por cinco durante la consulta. Aplica B y E una sola vez al ataque completo.",
+        "Resuelve ventaja o desventaja como en D&D antes de consultar la tabla. Un 1 natural inicial falla, por grande que resulte R. Un 20 natural inicial impacta, es crítico y abre la tirada según el apartado siguiente. En los demás casos, cruza la fila R con la columna de protección del objetivo. Por debajo de la primera fila, el resultado ordinario es un fallo. Una raya significa fallo. Una cifra es el daño físico ordinario de los dados base, incluido el posible suplemento: añade después el modificador plano M una sola vez. Una barra separa los valores a una mano y a dos manos, en ese orden.",
+        "La calidad del golpe elige un percentil de la distribución de los dados físicos del arma. No multiplica directamente su daño. Con calidad 0,70, un d8 produce 6: hasta 5 se acumula el 62,5 % de los resultados; hasta 6, el 75 %. Con varios dados se usa la distribución de su suma. Así, 2d6 conserva una concentración de resultados distinta de 1d12. Las celdas ya contienen este cálculo."
+      ],
+      "example_ids": ["impacto_normal"],
+      "source_ids": ["dnd_rules"]
+    },
+    {
+      "id": "abiertas",
+      "title": "IV. Veintes abiertos y prolongación",
+      "page_hint": 4,
+      "paragraphs": [
+        "Después de un 20 seleccionado, tira otro d20 y súmalo. Cada nuevo 20 permite continuar. Un resultado de 1 a 19 cierra la cadena: 20 + 10 suma 30; 20 + 20 + 10 suma 50. Un 1 de continuación suma uno y no causa un fallo. Las continuaciones son dados simples, sin repetir ventaja, desventaja ni bonificaciones.",
+        "El crítico conserva los dados que corresponden en D&D: se duplican los dados pertinentes y se añade M una vez. Añade también el suplemento físico Δ una sola vez. No uses para el crítico la cifra ordinaria de la celda, no maximices además sus dados y no vuelvas a duplicarlos por cada 20. Un rasgo que produzca críticos con 19 sigue funcionando, pero solo el 20 abre. No se añaden heridas, sangrado ni otros efectos críticos de Rolemaster.",
+        "Las filas impresas llegan hasta R = 35; el daño continúa después. El pie de cada arma indica la media μ de sus dados físicos y, para cada protección, R₀, comienzo del último tramo. Calcula Δ = suelo[μ × máximo(0, R − R₀) / 10]. Suelo significa redondear hacia abajo. Por encima de 35, todas las curvas incluidas han alcanzado su calidad máxima: un impacto ordinario causa máximo de los dados físicos + M + Δ. Un crítico conserva sus dados nativos + M + Δ. No hay techo de reglas; los redondeos producen escalones.",
+        "La cerbatana es una excepción: su daño fijo no contiene un dado base que convertir. Conserva su daño nativo, con los modificadores que correspondan, y no recibe este suplemento en la versión 0.3.1."
+      ],
+      "example_ids": ["impacto_abierto"],
+      "source_ids": ["dnd_rules", "dnd_equipment"]
+    },
+    {
+      "id": "componentes",
+      "title": "V. Componentes y resistencias",
+      "page_hint": 5,
+      "paragraphs": [
+        "Mantén separados los tipos de daño. Un arma que cause 1d8 + 3 cortante y 1d4 de ácido utiliza únicamente el d8 para la calidad y para μ. El ácido conserva su tirada propia. El mismo criterio sirve para fuego, necrótico y los demás tipos adicionales. En un crítico, el ejemplo conserva 2d8 + 3 + Δ cortante y 2d4 de ácido; Δ no aumenta el ácido.",
+        "Suma cada componente con sus modificadores y aplica después las resistencias, inmunidades o vulnerabilidades pertinentes. La resistencia reduce a la mitad, redondeando hacia abajo; la inmunidad anula; la vulnerabilidad duplica. Conserva las condiciones de cada capacidad, como las relativas a ataques mágicos. No reduzcas una vez cada dado y otra vez su componente, ni repartas después una reducción sobre un total que haya perdido sus tipos.",
+        "En Fantasy Grounds, configura líneas de daño distintas. El componente elemental puede aparecer antes del físico. Si hay varios componentes físicos sin marcas que los distingan, coloca primero la base del arma. Una sola línea que mezcle daño físico y ácido no permite separarlos con seguridad y queda fuera de la conversión automática."
+      ],
+      "example_ids": ["resistencia"],
+      "source_ids": ["dnd_rules"]
+    },
+    {
+      "id": "estado",
+      "title": "VI. Alcance de esta edición",
+      "page_hint": 6,
+      "paragraphs": [
+        "Estas tablas son un punto de partida para jugar y ajustar. Conservar los dados de D&D como escala no garantiza conservar su daño medio: cambian la frecuencia de impacto, la calidad obtenida y los resultados abiertos. Las diferencias deben valorarse por intento de ataque, incluidos fallos y críticos, y con distintas bonificaciones y defensas.",
+        "La agrupación material aún pierde diferencias entre armaduras. Una laminada de CA 17 y unas placas de CA 18, sin otras defensas, consultan placas con E = 0 y reciben el mismo tratamiento. Esta versión no conserva automáticamente esa mejora de construcción. Separar subtipos exige columnas y curvas adicionales; un bono mágico sí permanece en E.",
+        "Piel gruesa, escamas naturales y caparazón parten, respectivamente, de las curvas de cuero, malla y placas. Ballestas y armas de fuego parten de arcos; exóticas, de hojas. Sus columnas son independientes, pero estas semillas todavía no expresan una calibración propia. El shuriken de 1d4 y el trabuco de 2d6 son propuestas de campaña de este cuaderno, no estadísticas oficiales ni cambios automáticos de la ficha.",
+        "La revisión 0.3.1 corrige el redondeo de los percentiles: con calidad 0,50, un d12 da 6, no 7. El motor y los contratos simulados se han comprobado. La versión 0.3.1 sigue pendiente de prueba dentro de Fantasy Grounds, especialmente para la presentación y aplicación final por tipos. El manual describe la regla experimental; no certifica todavía todas las automatizaciones del programa."
+      ],
+      "source_ids": []
+    }
+  ],
+  "examples": [
+    {
+      "id": "impacto_normal",
+      "title": "Espada contra placas",
+      "section_id": "ataque",
+      "paragraphs": [
+        "Usa hojas (bladed), placas (plate), B = +5, E = 0 y 1d8 + 3. Un 17 natural da R = 22 e I = 110. La calidad es 0,70: la celda vale 6. Añade el modificador +3; el impacto causa 9 puntos físicos."
+      ],
+      "values": {"group": "bladed", "armor": "plate", "T": 17, "B": 5, "E": 0, "R": 22, "I": 110, "quality": 0.7, "base_damage": 6, "modifier": 3, "total": 9}
+    },
+    {
+      "id": "impacto_abierto",
+      "title": "La misma espada: 20 y 10",
+      "section_id": "abiertas",
+      "paragraphs": [
+        "La cadena suma T = 30. Con B = +5 y E = 0, R = 35 e I = 175. Esta columna tiene R₀ = 26; la media del d8 es 4,5. Δ = suelo(4,5 × 9 / 10) = 4. Como fue crítico, tira 2d8 + 3 + 4: el daño es 2d8 + 7, no la cifra ordinaria de la celda."
+      ],
+      "values": {"group": "bladed", "armor": "plate", "chain": [20, 10], "T": 30, "B": 5, "E": 0, "R": 35, "I": 175, "R0": 26, "mean": 4.5, "overflow": 9, "supplement": 4, "critical_damage": "2d8+7"}
+    },
+    {
+      "id": "resistencia",
+      "title": "Resistencia al daño necrótico",
+      "section_id": "componentes",
+      "paragraphs": [
+        "El ataque causa 9 cortantes y 3 necróticos. El objetivo resiste el daño necrótico: conserva los 9 cortantes y recibe suelo(3 / 2) = 1 necrótico. Pierde 10 puntos de golpe. La armadura no convierte ambos componentes en un único daño físico."
+      ],
+      "values": {"slashing": 9, "necrotic": 3, "necrotic_after_resistance": 1, "total": 10},
+      "source_ids": ["dnd_rules"]
+    }
+  ],
+  "fg": {
+    "title": "Apéndice: uso en Fantasy Grounds",
+    "paragraphs": [
+      "Copia ArmsBridge.ext en extensions y actívalo en una campaña de prueba 5E con reglas 2024. Empieza en comparación. Asigna al defensor su protección y CA material; asocia las acciones personalizadas a su grupo. Ataca a un solo objetivo y realiza el daño desde el mismo cliente, antes del siguiente ataque. Espera a que termine la cadena abierta: un daño solicitado antes conserva la resolución nativa, muestra un aviso y descarta ese contexto.",
+      "Las resistencias y los puntos de golpe siguen a cargo del sistema nativo. Si falla una conversión de calidad después de preparar el suplemento, este permanece en la tirada; revisa el diagnóstico. Los comandos de vista previa calculan un componente, sin aplicar daño ni simular las resistencias del objetivo."
+    ],
+    "commands": [
+      {"command": "/arms status", "description": "Consultar modo y capacidades."},
+      {"command": "/arms mode compare", "description": "Comparar sin sustituir la resolución."},
+      {"command": "/arms armor \"Diana\" plate 18", "description": "Asignar placas y CA material 18."},
+      {"command": "/arms armor \"Diana\" natural_scales 16", "description": "Asignar escamas naturales expresamente."},
+      {"command": "/arms weapon \"Longsword\" bladed", "description": "Asociar la acción a hojas."},
+      {"command": "/arms catalog \"Longsword\" 2h", "description": "Consultar categoría, uso y grupo."},
+      {"command": "/arms preview bladed plate 20+10 5 0 1d8+3", "description": "Reproducir el ejemplo abierto."},
+      {"command": "/arms mode on", "description": "Activar la conversión disponible."},
+      {"command": "/arms clear", "description": "Descartar contextos pendientes."},
+      {"command": "/arms mode off", "description": "Desactivar la conversión."}
+    ],
+    "source_ids": ["fg_extensions"]
+  },
+  "colophon": {
+    "title": "Procedencia y referencias",
+    "paragraphs": [
+      "Reglas de campaña y tablas originales de Arms Bridge 0.3.1 alpha. Referencia conceptual: Arms Law de Rolemaster Classic, publicado por Iron Crown Enterprises. Las reglas experimentales, agrupaciones y fórmulas de este cuaderno no se atribuyen a ICE ni a Wizards of the Coast. Las fuentes siguientes permiten consultar sus respectivas reglas y documentación."
+    ],
+    "sources": [
+      {"id": "ice_classic", "title": "Rolemaster Classic: Arms Law — muestra del editor", "url": "https://d1vzi28wh99zvq.cloudfront.net/pdf_previews/88653-sample.pdf", "note": "Referencia conceptual; no incluye las matrices de ataque completas."},
+      {"id": "ice_past", "title": "ICE — Rolemaster Past", "url": "https://ironcrown.com/rolemaster/rolemaster-past/"},
+      {"id": "dnd_rules", "title": "D&D 2024 Basic Rules — Playing the Game", "url": "https://www.dndbeyond.com/sources/dnd/br-2024/playing-the-game"},
+      {"id": "dnd_equipment", "title": "D&D 2024 Basic Rules — Equipment", "url": "https://www.dndbeyond.com/sources/dnd/br-2024/equipment"},
+      {"id": "fg_extensions", "title": "Fantasy Grounds — Developer Guide: Creating Extensions", "url": "https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645657/Developer+Guide+-+Creating+Extensions"},
+      {"id": "fg_changes", "title": "Fantasy Grounds — actualización de reglas de mayo de 2026", "url": "https://www.fantasygrounds.com/forums/archive/index.php/t-86968.html"}
+    ]
+  }
+}
