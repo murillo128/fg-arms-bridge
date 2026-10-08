@@ -1,0 +1,42 @@
+[
+  {
+    "id": "melbick",
+    "name": "Melbick Half-Hit",
+    "url": "https://dnd-companion.lorien.cloud/fg/avatar/melbick.png",
+    "bytes": 20003,
+    "sha256": "c02f76ded88f4f83cfd2a50c33e12a96e327205e085b3d6372e75f9c18b43dc7",
+    "included": false
+  },
+  {
+    "id": "elarion",
+    "name": "Elarion Myrthas",
+    "url": "https://dnd-companion.lorien.cloud/fg/avatar/elarion.png",
+    "bytes": 23271,
+    "sha256": "c78a7ff0bfa98ee591b6b49ff026426084a3ce17456445bde902bb3d505345fd",
+    "included": false
+  },
+  {
+    "id": "valkian",
+    "name": "Valkian of Balanced Soul",
+    "url": "https://dnd-companion.lorien.cloud/fg/avatar/valkian.png",
+    "bytes": 23144,
+    "sha256": "8440e695956dc5c56980dd970f36beb099e6110db18325c44f59152b871d2a54",
+    "included": false
+  },
+  {
+    "id": "vogun",
+    "name": "Vogun Clegane",
+    "url": "https://dnd-companion.lorien.cloud/fg/avatar/vogun.png",
+    "bytes": 23335,
+    "sha256": "f32932059829e36ffc544db47405b48bd20c0c9b57e5538b6a53649dd3d39b3c",
+    "included": false
+  },
+  {
+    "id": "zephyrion",
+    "name": "Zephyrion",
+    "url": "https://dnd-companion.lorien.cloud/fg/avatar/zephyrion.png",
+    "bytes": 34751,
+    "sha256": "f65fda0e84e28eca7bc0429e163539faa95c7b2757a5695c435d17ad40d551df",
+    "included": false
+  }
+]

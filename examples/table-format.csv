@@ -1,0 +1,17 @@
+weapon,armor,min,max,hit,quality
+training_sword,unarmored,0,49,false,0
+training_sword,unarmored,50,69,true,0.25
+training_sword,unarmored,70,89,true,0.60
+training_sword,unarmored,90,,true,1
+training_sword,leather,0,59,false,0
+training_sword,leather,60,79,true,0.25
+training_sword,leather,80,99,true,0.60
+training_sword,leather,100,,true,1
+training_sword,mail,0,74,false,0
+training_sword,mail,75,94,true,0.25
+training_sword,mail,95,114,true,0.60
+training_sword,mail,115,,true,1
+training_sword,plate,0,89,false,0
+training_sword,plate,90,109,true,0.25
+training_sword,plate,110,129,true,0.60
+training_sword,plate,130,,true,1

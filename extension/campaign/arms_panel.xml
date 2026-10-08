@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <windowclass name="arms_bridge">
+    <frame>utilitybox</frame>
+    <placement><size width="740" height="670" /></placement>
+    <sizelimits><minimum width="740" height="670" /></sizelimits>
+    <softclose />
+    <nodelete />
+    <script file="campaign/arms_panel.lua" />
+    <sheetdata>
+      <stringcontrol name="title">
+        <bounds>24,18,680,28</bounds><font>sheetlabel</font><static>Arms Bridge · 5E / 2024</static>
+      </stringcontrol>
+      <stringcontrol name="intro">
+        <bounds>24,54,680,58</bounds><font>sheettext</font><multilinespacing>19</multilinespacing>
+        <static>Relaciona ataque y daño con tablas de arma y armadura. Las curvas incluidas son de demostración; no son las tablas oficiales de Arms Law.</static>
+      </stringcontrol>
+      <buttoncontrol name="mode_compare">
+        <bounds>24,120,126,30</bounds><font>sheetlabel</font><text>Comparar</text>
+        <script>function onButtonPress() ArmsCommands.setMode("compare"); window.refreshStatus(); end</script>
+      </buttoncontrol>
+      <buttoncontrol name="mode_on">
+        <bounds>166,120,126,30</bounds><font>sheetlabel</font><text>Aplicar</text>
+        <script>function onButtonPress() ArmsCommands.setMode("on"); window.refreshStatus(); end</script>
+      </buttoncontrol>
+      <buttoncontrol name="mode_off">
+        <bounds>308,120,126,30</bounds><font>sheetlabel</font><text>Desactivar</text>
+        <script>function onButtonPress() ArmsCommands.setMode("off"); window.refreshStatus(); end</script>
+      </buttoncontrol>
+      <buttoncontrol name="diagnostics">
+        <bounds>452,120,252,30</bounds><font>sheetlabel</font><text>Diagnóstico en el chat</text>
+        <script>function onButtonPress() ArmsCommands.showStatus(); window.refreshStatus(); end</script>
+      </buttoncontrol>
+      <stringcontrol name="status_text">
+        <bounds>24,165,680,42</bounds><font>sheettext</font><multilinespacing>18</multilinespacing><readonly />
+      </stringcontrol>
+      <stringcontrol name="csv_label">
+        <bounds>24,220,680,26</bounds><font>sheetlabel</font><static>Importar tablas adaptadas · CSV</static>
+      </stringcontrol>
+      <stringcontrol name="csv_info">
+        <bounds>24,248,680,46</bounds><font>sheettext</font><multilinespacing>18</multilinespacing>
+        <static>Pega el archivo completo con cabecera weapon,armor,min,max,hit,quality. La importación se valida antes de guardar. Solo el director puede importar.</static>
+      </stringcontrol>
+      <stringcontrol name="csv_input">
+        <bounds>28,308,672,270</bounds><font>sheettext</font><multilinespacing>17</multilinespacing>
+        <frame name="fieldlight" offset="4,4,4,4" />
+      </stringcontrol>
+      <buttoncontrol name="import_button">
+        <bounds>24,600,180,32</bounds><font>sheetlabel</font><text>Validar e importar</text>
+        <script>function onButtonPress() window.importCSV(); end</script>
+      </buttoncontrol>
+      <buttoncontrol name="help_button">
+        <bounds>218,600,178,32</bounds><font>sheetlabel</font><text>Comandos y ayuda</text>
+        <script>function onButtonPress() ArmsCommands.help(); end</script>
+      </buttoncontrol>
+      <buttoncontrol name="close_button">
+        <bounds>576,600,128,32</bounds><font>sheetlabel</font><text>Cerrar</text>
+        <script>function onButtonPress() window.close(); end</script>
+      </buttoncontrol>
+    </sheetdata>
+  </windowclass>
+</root>

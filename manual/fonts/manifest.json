@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "fonts": [
+    {
+      "file": "LiberationSerif-Bold.ttf",
+      "sha256": "d754ba427cfe0bca54ae052384baa8f842da5bd6550ad4da024ac441e7a7d5ce",
+      "family": "Liberation Serif",
+      "version": "2.1.5",
+      "license": "SIL Open Font License 1.1",
+      "notice": "LICENSE-Liberation.txt",
+      "origin": "LibreOffice distribution, share/fonts/truetype"
+    },
+    {
+      "file": "LiberationSerif-BoldItalic.ttf",
+      "sha256": "f17db8af71e24d2066b587546021d4f0b296be389512b658dec3c09affeb11a7",
+      "family": "Liberation Serif",
+      "version": "2.1.5",
+      "license": "SIL Open Font License 1.1",
+      "notice": "LICENSE-Liberation.txt",
+      "origin": "LibreOffice distribution, share/fonts/truetype"
+    },
+    {
+      "file": "LiberationSerif-Italic.ttf",
+      "sha256": "0e3dea9f8d613e006ccfa62201f33e265d19167bd0907725c3e145368b04fc2e",
+      "family": "Liberation Serif",
+      "version": "2.1.5",
+      "license": "SIL Open Font License 1.1",
+      "notice": "LICENSE-Liberation.txt",
+      "origin": "LibreOffice distribution, share/fonts/truetype"
+    },
+    {
+      "file": "LiberationSerif-Regular.ttf",
+      "sha256": "058ea80864aef09a23f45cbec2bb5400bc3dfbdea01c3f10538a21fcb497fb74",
+      "family": "Liberation Serif",
+      "version": "2.1.5",
+      "license": "SIL Open Font License 1.1",
+      "notice": "LICENSE-Liberation.txt",
+      "origin": "LibreOffice distribution, share/fonts/truetype"
+    },
+    {
+      "file": "URWBookman-Demi.afm",
+      "sha256": "80a6ec6eb01126e23e79e0d622ed822ad21db84d1b253281bfcb871768f87a10",
+      "family": "URW Bookman Demi",
+      "version": "20200910",
+      "license": "AGPL-3 with font embedding exception",
+      "notice": "LICENSE-URW.txt",
+      "origin": "Debian fonts-urw-base35 distribution",
+      "distribution_version": "20200910-8",
+      "upstream": "https://github.com/ArtifexSoftware/urw-base35-fonts"
+    },
+    {
+      "file": "URWBookman-Demi.pfb",
+      "sha256": "a00eaa50a57b194381f141fb290b7ea6ac6a4438c5fe3d010caf555cad6b30cd",
+      "family": "URW Bookman Demi",
+      "version": "20200910",
+      "license": "AGPL-3 with font embedding exception",
+      "notice": "LICENSE-URW.txt",
+      "origin": "Debian fonts-urw-base35 distribution",
+      "distribution_version": "20200910-8",
+      "upstream": "https://github.com/ArtifexSoftware/urw-base35-fonts"
+    }
+  ],
+  "notes": [
+    "Original font files are bundled byte-for-byte; no fallback fonts are used.",
+    "Font licenses are separate from the extension code license."
+  ],
+  "source_files": [
+    {
+      "file": "URWBookman-Demi.t1",
+      "sha256": "baee9214653525ad01de0bc326e3c11b7826c51567336619517d50eab313e37b",
+      "notice": "LICENSE-URW.txt",
+      "package": "fonts-urw-base35",
+      "package_version": "20200910-8",
+      "upstream": "https://github.com/ArtifexSoftware/urw-base35-fonts",
+      "upstream_version": "20200910",
+      "relationship": "Corresponding Type1 source from the same distribution. All 855 decoded glyph programs, subroutines, font metadata and private parameters match the bundled PFB; serialization and encrypted bytes differ. The build embeds the exact PFB without regenerating it."
+    }
+  ]
+}

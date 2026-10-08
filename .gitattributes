@@ -1,0 +1,22 @@
+* text=auto
+*.lua text eol=lf
+*.py text eol=lf
+*.xml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.sh text eol=lf
+*.csv text eol=lf
+VERSION text eol=lf
+LICENSE text eol=lf
+*.png binary
+*.ttf binary
+*.pfb binary
+*.t1 binary
+*.afm binary
+*.pdf binary
+*.ext binary
+*.zip binary

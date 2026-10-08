@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "accessed": "2026-10-08",
+  "notes": [
+    "Datos oficiales contrastados el 8 de octubre de 2026 con las reglas básicas 2024 y las fichas oficiales enlazadas. Los nombres españoles y las notas son redacción propia; no se afirma que reproduzcan la localización editorial oficial.",
+    "Los ocho grupos proceden de la clasificación de campaña. Las maestrías de cada arma son metadatos oficiales individuales; mostrarlas no concede su uso ni instala reglas nuevas.",
+    "dice_1h y dice_2h muestran solo dados base, antes de modificadores. null indica que ese uso no tiene un valor definido por esta ficha; para Lance, el uso 1H exige estar montado.",
+    "Shuriken y Blunderbuss tienen propuestas de perfil de campaña explícitas; el catálogo de la extensión no se modifica con este archivo. Sus campos catalog_category_030 y catalog_hands_030 conservan el estado real de la alpha.",
+    "El daño fijo de la cerbatana es 1, sin modificador de característica salvo regla específica. Arms Bridge 0.3.1 conserva su resolución nativa y no le añade suplemento abierto.",
+    "La distribución de los dados, las resistencias y las propiedades de D&D siguen siendo independientes del nombre del grupo. Ninguna nota pretende afirmar ventajas históricas o físicas medidas de un arma.",
+    "properties y properties_es describen propiedades relevantes; range_ft conserva pies para evitar redondeos de traducción. No se asignan alcances a las propuestas de campaña."
+  ],
+  "sources": {
+    "equipment_2024": {
+      "title": "D&D 2024 Basic Rules — Equipment",
+      "url": "https://www.dndbeyond.com/sources/dnd/br-2024/equipment",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Categorías, propiedades, tabla de armas y maestrías individuales. Las categorías de campaña no proceden de esta fuente."
+    },
+    "damage_2024": {
+      "title": "D&D 2024 Basic Rules — Playing the Game, Damage Rolls",
+      "url": "https://www.dndbeyond.com/sources/dnd/br-2024/playing-the-game#DamageRolls",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Modificador de característica, excepción explícita del daño fijo de cerbatana y críticos."
+    },
+    "campaign_taxonomy": {
+      "title": "Clasificación de campaña aportada por el usuario",
+      "url": null,
+      "scope": "Ocho grupos y cuarenta nombres; no asigna aquí las maestrías alternativas de la tabla original."
+    },
+    "campaign_proposals": {
+      "title": "Propuestas de perfil para Shuriken y Blunderbuss",
+      "url": null,
+      "scope": "Elecciones de campaña para este documento: shuriken simple 1H 1d4 perforante; trabuco marcial 2H 2d6 perforante. No son datos oficiales de D&D 2024 ni cambios ya realizados en la extensión."
+    },
+    "extension_030": {
+      "title": "Arms Bridge 0.3.1 — implementación local",
+      "url": null,
+      "local_paths": [
+        "extension/scripts/arms_catalog.lua",
+        "extension/scripts/arms_bridge.lua",
+        "README.md"
+      ],
+      "scope": "Identificadores, clasificación y exclusión de componentes físicos sin dados; las notas de uso sobre tablas son elaboración propia."
+    },
+    "weapon_club": {
+      "title": "Club — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/5-club",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_greatclub": {
+      "title": "Greatclub — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/6-greatclub",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_light_hammer": {
+      "title": "Light Hammer — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/10-light-hammer",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_mace": {
+      "title": "Mace — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/11-mace",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_flail": {
+      "title": "Flail — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/20-flail",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_morningstar": {
+      "title": "Morningstar — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/26-morningstar",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_warhammer": {
+      "title": "Warhammer — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/33-warhammer",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_war_pick": {
+      "title": "War Pick — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/32-war-pick",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_maul": {
+      "title": "Maul — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/25-maul",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_dagger": {
+      "title": "Dagger — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/3-dagger",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_sickle": {
+      "title": "Sickle — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/13-sickle",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_greatsword": {
+      "title": "Greatsword — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/22-greatsword",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_longsword": {
+      "title": "Longsword — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/4-longsword",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_shortsword": {
+      "title": "Shortsword — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/30-shortsword",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_scimitar": {
+      "title": "Scimitar — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/29-scimitar",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_rapier": {
+      "title": "Rapier — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/28-rapier",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_handaxe": {
+      "title": "Handaxe — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/7-handaxe",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_battleaxe": {
+      "title": "Battleaxe — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/19-battleaxe",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_greataxe": {
+      "title": "Greataxe — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/21-greataxe",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_spear": {
+      "title": "Spear — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/14-spear",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_quarterstaff": {
+      "title": "Quarterstaff — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/12-quarterstaff",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_glaive": {
+      "title": "Glaive — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/2-glaive",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_halberd": {
+      "title": "Halberd — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/23-halberd",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_lance": {
+      "title": "Lance — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/24-lance",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_pike": {
+      "title": "Pike — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/27-pike",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_trident": {
+      "title": "Trident — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/31-trident",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_shortbow": {
+      "title": "Shortbow — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/17-shortbow",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_longbow": {
+      "title": "Longbow — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/37-longbow",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_hand_crossbow": {
+      "title": "Hand Crossbow — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/1-crossbow-hand",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_light_crossbow": {
+      "title": "Light Crossbow — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/15-crossbow-light",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_heavy_crossbow": {
+      "title": "Heavy Crossbow — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/36-crossbow-heavy",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_javelin": {
+      "title": "Javelin — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/8-javelin",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_sling": {
+      "title": "Sling — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/18-sling",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_dart": {
+      "title": "Dart — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/16-dart",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_blowgun": {
+      "title": "Blowgun — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/35-blowgun",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_whip": {
+      "title": "Whip — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/34-whip",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_pistol": {
+      "title": "Pistol — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/42-pistol",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    },
+    "weapon_musket": {
+      "title": "Musket — Equipment, D&D Beyond",
+      "url": "https://www.dndbeyond.com/equipment/43-musket",
+      "accessed": "2026-10-08",
+      "publisher": "Wizards of the Coast / D&D Beyond",
+      "scope": "Datos de esta arma: categoría, daño, propiedades y maestría. Nota de uso redactada de forma original."
+    }
+  }
+}
